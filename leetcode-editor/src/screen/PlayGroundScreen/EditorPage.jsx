@@ -2,7 +2,7 @@ import { useContext, useRef, useState } from "react";
 import "./editorPage.scss";
 import Editor from "@monaco-editor/react";
 import { PlaygroundContext } from "../../Provider/PlaygroundProvider";
-const EditorPage = ({ fileId, folderId, submitCode }) => {
+const EditorPage = ({ fileId, folderId, submitCode, setMagic, magic }) => {
   const { getDefaultCode, getLanguage, updateLanguage, saveNewCode } =
     useContext(PlaygroundContext);
   const [code, setCode] = useState(() => {
@@ -79,17 +79,25 @@ const EditorPage = ({ fileId, folderId, submitCode }) => {
     submitCode({ code: codeRef.current, language });
   };
 
+  const handleMagic = () => {
+    console.log("magic", magic);
+    setMagic(!magic);
+  };
+
   return (
     <div className="editor-container">
       <div className="editor-header">
         <div className="header-left">
           <div className="title">
-            <span>{"title"}</span>
+            <span className="title-name">{"title"}</span>
             <span className="material-icons">edit</span>
           </div>
           <button onClick={saveCode}>Save Code</button>
         </div>
         <div className="header-right">
+          <div className="magic-icon" title="AI Help" onClick={handleMagic}>
+            <i className="fa fa-magic magic" aria-hidden="true"></i>
+          </div>
           <div className="dropdown-container">
             <select
               className="dropdown"

@@ -9,12 +9,12 @@
     align-items: center;
     justify-content: center;
     gap: 0.8rem;
-    padding: 2px;
+    padding: 0.2rem;
     img {
       width: 4rem;
     }
     b {
-      font-size: 30px;
+      font-size: 3rem;
     }
   }
 
@@ -40,10 +40,10 @@
 
       textarea {
         flex-grow: 1;
-        font-size: 1rem;
+        font-size: 1.5rem;
         background-color: white;
         color: black;
-        padding: 5px;
+        padding: 0.5rem;
         resize: none;
         border: none;
         overflow-y: auto;
@@ -71,8 +71,8 @@
 
         .icons {
           position: relative;
-          bottom: -4px;
-          right: 10px;
+          bottom: -0.4rem;
+          right: 1rem;
         }
 
         button {
@@ -94,10 +94,10 @@
     justify-content: center;
     align-items: center;
     .loader {
-      width: 100px;
-      height: 100px;
+      width: 10rem;
+      height: 10rem;
       background-color: transparent;
-      border: 10px solid rgba(255, 0, 0, 0.332);
+      border: 1rem solid rgba(255, 0, 0, 0.332);
       border-left-color: red;
       border-radius: 50%;
       animation: 0.8s loader infinite linear;

@@ -24,8 +24,8 @@ const Card = ({ fileName, language, id, folderId }) => {
       <div className="card-data" onClick={handleId}>
         <img src="logo.png" alt="logo" />
         <div className="card-header">
-          <h4>{fileName}</h4>
-          <h4>Language : {language}</h4>
+          <h4 className="text-size">{fileName}</h4>
+          <h4 className="text-size">Language : {language}</h4>
         </div>
       </div>
       <div className="card-tool">
@@ -61,7 +61,7 @@ const Folder = ({ folderTitle, cards, id }) => {
           <span className="material-icons" style={{ color: "rgb(255,202,40)" }}>
             folder
           </span>
-          <span style={{ fontSize: "1.2rem", fontWeight: "600" }}>
+          <span style={{ fontSize: "1.7rem", fontWeight: "600" }}>
             {folderTitle}
           </span>
         </div>
