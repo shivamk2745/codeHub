@@ -37,6 +37,74 @@
       background-color: rgb(237, 237, 237);
       color: black;
       overflow: hidden;
+      .ai-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .ai-header {
+          font-size: 2.4rem;
+          color: black;
+        }
+
+        .subtitle {
+          font-size: 1.6rem;
+          margin-bottom: 2rem;
+          color: black;
+        }
+
+        .chat-modes {
+          display: flex;
+          justify-content: space-around;
+          margin-bottom: 3rem;
+          gap: 1rem;
+          color: black;
+          font-weight: 700;
+          .mode-card {
+            background-color: aqua;
+            border-radius: 1rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+              background-color: #3e3e3e;
+              color: white;
+            }
+
+            .icon {
+              font-size: 2.4rem;
+              margin-bottom: 1rem;
+              color: black;
+            }
+
+            p {
+              font-size: 1.4rem;
+              text-align: left;
+              margin: 0;
+            }
+          }
+        }
+       p{
+        padding: 0.5rem;
+       }
+        .description {
+          font-size: 2rem;
+          font-weight: 700;
+          color: black;
+          text-align: left;
+        }
+
+        .examples {
+          font-size: 2rem;
+          color: black;
+          text-align: left;
+        }
+      }
 
       textarea {
         flex-grow: 1;

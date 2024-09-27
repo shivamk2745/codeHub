@@ -11,7 +11,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route
-              path="/playground/:fileId/:folderId"
+              path="/playground/:fileId/:folderId/:fileName"
               element={<Playground />}
             />
           </Routes>

@@ -5,11 +5,14 @@ import { useCallback, useState } from "react";
 import { createSubmission } from "./judge";
 import Import from "./Import";
 import Ai from "./Ai";
+import Question from "./Question";
 const Playground = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const param = useParams();
-  const { fileId, folderId } = param;
+  const { fileId, folderId, fileName } = param;
+  // console.log(fileName);
+
   // console.log(param);
   const [loader, setLoader] = useState(false);
   const [magic, setMagic] = useState(false);
@@ -51,12 +54,23 @@ const Playground = () => {
               submitCode={submitCode}
               setMagic={setMagic}
               magic={magic}
+              input={input}
+              setInput={setInput}
+              output={output}
+              setOutput={setOutput}
             />
           </div>
-          {/* <div className=".input-container"></div> */}
-          {
-            magic ? (<Ai/>) : (<Import/>)
-          }
+          {magic ? (
+            <Ai />
+          ) : (
+            // <Import
+            //   input={input}
+            //   setInput={setInput}
+            //   output={output}
+            //   setOutput={setOutput}
+            // />
+            <Question />
+          )}
           {/* <Import
             input={input}
             setInput={setInput}

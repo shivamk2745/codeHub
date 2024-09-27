@@ -2,7 +2,17 @@ import { useContext, useRef, useState } from "react";
 import "./editorPage.scss";
 import Editor from "@monaco-editor/react";
 import { PlaygroundContext } from "../../Provider/PlaygroundProvider";
-const EditorPage = ({ fileId, folderId, submitCode, setMagic, magic }) => {
+const EditorPage = ({
+  fileId,
+  folderId,
+  submitCode,
+  setMagic,
+  magic,
+  input,
+  setInput,
+  output,
+  setOutput,
+}) => {
   const { getDefaultCode, getLanguage, updateLanguage, saveNewCode } =
     useContext(PlaygroundContext);
   const [code, setCode] = useState(() => {
@@ -83,7 +93,21 @@ const EditorPage = ({ fileId, folderId, submitCode, setMagic, magic }) => {
     console.log("magic", magic);
     setMagic(!magic);
   };
-
+  const handleInput = (e) => {
+    const file = e.target.files[0];
+    const fileType = file.type.includes("text");
+    const emptyType = file.type.includes("");
+    if (fileType || emptyType) {
+      const readFile = new FileReader();
+      readFile.readAsText(file);
+      readFile.onload = function (value) {
+        console.log(value.target.result);
+        setInput(value.target.result);
+      };
+    } else {
+      console.log("Incorrect file type");
+    }
+  };
   return (
     <div className="editor-container">
       <div className="editor-header">
@@ -122,7 +146,7 @@ const EditorPage = ({ fileId, folderId, submitCode, setMagic, magic }) => {
 
       <div className="editor-body">
         <Editor
-          height={"100%"}
+          // height={"100%"}
           theme={theme}
           language={language}
           options={handleOption}
@@ -130,28 +154,69 @@ const EditorPage = ({ fileId, folderId, submitCode, setMagic, magic }) => {
           onChange={handleEditorChange}
         />
       </div>
-      <div className="editor-footer">
-        <div className="title">
-          <span className="material-icons">fullscreen</span>
-          <span>Full Screen</span>
+      <div className="entire-footer">
+        <div className="container-input">
+          <div className="input-container">
+            <div className="new-input">
+              <b>Input:</b>
+              <label htmlFor="uploadTestcase" className="label">
+                <span className="material-icons icons">upload</span>
+                <span className="title">Import Code</span>
+              </label>
+              <input
+                type="file"
+                id="uploadTestcase"
+                onChange={handleInput}
+                style={{ display: "none" }}
+              />
+            </div>
+            <textarea
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+              }}
+            ></textarea>
+          </div>
+          <div className="output-container">
+            <div className="new-input">
+              <b>Output:</b>
+              <button className="label">
+                <span className="material-icons icons">download</span>
+                <span className="title">Export Code</span>
+              </button>
+            </div>
+            <textarea
+              value={output}
+              onChange={(e) => {
+                setOutput(e.target.value);
+              }}
+            ></textarea>
+          </div>
         </div>
-        <div className="title">
-          <label htmlFor="upload" className="label">
-            <span className="material-icons icons">upload</span>
-            <span>Import Code</span>
-          </label>
-          <input
-            type="file"
-            id="upload"
-            onChange={handleChangeInput}
-            style={{ display: "none" }}
-          />
+
+        <div className="editor-footer">
+          <div className="title">
+            <span className="material-icons">fullscreen</span>
+            <span>Full Screen</span>
+          </div>
+          <div className="title">
+            <label htmlFor="upload" className="label">
+              <span className="material-icons icons">upload</span>
+              <span>Import Code</span>
+            </label>
+            <input
+              type="file"
+              id="upload"
+              onChange={handleChangeInput}
+              style={{ display: "none" }}
+            />
+          </div>
+          <div className="title" onClick={handleExport}>
+            <span className="material-icons">download</span>
+            <span>Export Code</span>
+          </div>
+          <button onClick={runCode}>Run Code</button>
         </div>
-        <div className="title" onClick={handleExport}>
-          <span className="material-icons">download</span>
-          <span>Export Code</span>
-        </div>
-        <button onClick={runCode}>Run Code</button>
       </div>
     </div>
   );

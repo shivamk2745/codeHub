@@ -17,7 +17,7 @@ const Card = ({ fileName, language, id, folderId }) => {
     modalFeature.openModal("edit-folder", { id });
   };
   const handleId = () => {
-    navigate(`playground/${id}/${folderId}`);
+    navigate(`playground/${id}/${folderId}/${fileName}`);
   };
   return (
     <div className="card">
