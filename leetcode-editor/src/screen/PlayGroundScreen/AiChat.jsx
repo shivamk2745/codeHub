@@ -3,9 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { QuestionContext } from "./QuestionProvider";
 
 const AiChat = ({ editorCode, mode }) => {
-  const genAI = new GoogleGenerativeAI(
-    "AIzaSyCf8llVKNvY8Vz6AA7jnuGD-1tR6vmqzJo"
-  );
+  const genAI = new GoogleGenerativeAI(process.env.API_KEY);
   const [aiResponse, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
   const { questionDesc, examples } = useContext(QuestionContext);
