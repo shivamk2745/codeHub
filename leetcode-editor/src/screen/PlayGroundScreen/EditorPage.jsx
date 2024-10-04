@@ -12,6 +12,8 @@ const EditorPage = ({
   setInput,
   output,
   setOutput,
+  editorCode,
+  setEditorCode,
 }) => {
   const { getDefaultCode, getLanguage, updateLanguage, saveNewCode } =
     useContext(PlaygroundContext);
@@ -23,6 +25,9 @@ const EditorPage = ({
   });
   const [theme, setTheme] = useState("vs-dark");
   const codeRef = useRef(code);
+  // console.log(code);
+  setEditorCode(codeRef.current);
+
   const handleOption = {
     fontSize: "20px",
   };
@@ -48,7 +53,6 @@ const EditorPage = ({
   const handleEditorChange = (e) => {
     codeRef.current = e;
   };
-  // console.log({ fileId, folderId });
 
   const saveCode = () => {
     console.log("click");
@@ -159,10 +163,10 @@ const EditorPage = ({
           <div className="input-container">
             <div className="new-input">
               <b>Input:</b>
-              <label htmlFor="uploadTestcase" className="label">
+              <button htmlFor="uploadTestcase" className="label">
                 <span className="material-icons icons">upload</span>
                 <span className="title">Import Code</span>
-              </label>
+              </button>
               <input
                 type="file"
                 id="uploadTestcase"
@@ -170,13 +174,17 @@ const EditorPage = ({
                 style={{ display: "none" }}
               />
             </div>
-            <textarea
-              value={input}
-              onChange={(e) => {
-                setInput(e.target.value);
-              }}
-            ></textarea>
+
+            <div className="textarea-wrapper">
+              <textarea
+                value={input}
+                onChange={(e) => {
+                  setInput(e.target.value);
+                }}
+              ></textarea>
+            </div>
           </div>
+
           <div className="output-container">
             <div className="new-input">
               <b>Output:</b>
@@ -185,12 +193,15 @@ const EditorPage = ({
                 <span className="title">Export Code</span>
               </button>
             </div>
-            <textarea
-              value={output}
-              onChange={(e) => {
-                setOutput(e.target.value);
-              }}
-            ></textarea>
+
+            <div className="textarea-wrapper">
+              <textarea
+                value={output}
+                onChange={(e) => {
+                  setOutput(e.target.value);
+                }}
+              ></textarea>
+            </div>
           </div>
         </div>
 
@@ -200,10 +211,8 @@ const EditorPage = ({
             <span>Full Screen</span>
           </div>
           <div className="title">
-            <label htmlFor="upload" className="label">
-              <span className="material-icons icons">upload</span>
-              <span>Import Code</span>
-            </label>
+            <span className="material-icons icons">upload</span>
+            <span>Import Code</span>
             <input
               type="file"
               id="upload"

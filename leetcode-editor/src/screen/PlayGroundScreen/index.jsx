@@ -6,9 +6,11 @@ import { createSubmission } from "./judge";
 import Import from "./Import";
 import Ai from "./Ai";
 import Question from "./Question";
+import { QuestionProvider } from "./QuestionProvider";
 const Playground = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
+  const [editorCode, setEditorCode] = useState("");
   const param = useParams();
   const { fileId, folderId, fileName } = param;
   // console.log(fileName);
@@ -35,57 +37,63 @@ const Playground = () => {
   const submitCode = useCallback(
     ({ code, language }) => {
       createSubmission({ code, language, stdin: input, callback });
+
+      console.log(code);
     },
     [input]
   );
 
   return (
-    <div className="outer-container">
-      <div className="playground-container">
-        <div className="container-header">
-          <img src="/logo.png" alt="logo" />
-          <b>Code Online</b>
-        </div>
-        <div className="container-body">
-          <div className="editor">
-            <EditorPage
-              fileId={fileId}
-              folderId={folderId}
-              submitCode={submitCode}
-              setMagic={setMagic}
-              magic={magic}
-              input={input}
-              setInput={setInput}
-              output={output}
-              setOutput={setOutput}
-            />
+    <QuestionProvider>
+      <div className="outer-container">
+        <div className="playground-container">
+          <div className="container-header">
+            <img src="/logo.png" alt="logo" />
+            <b>Code Online</b>
           </div>
-          {magic ? (
-            <Ai />
-          ) : (
-            // <Import
-            //   input={input}
-            //   setInput={setInput}
-            //   output={output}
-            //   setOutput={setOutput}
-            // />
-            <Question />
-          )}
-          {/* <Import
+          <div className="container-body">
+            <div className="editor">
+              <EditorPage
+                fileId={fileId}
+                folderId={folderId}
+                submitCode={submitCode}
+                setMagic={setMagic}
+                magic={magic}
+                input={input}
+                setInput={setInput}
+                output={output}
+                setOutput={setOutput}
+                editorCode={editorCode}
+                setEditorCode={setEditorCode}
+              />
+            </div>
+            {magic ? (
+              <Ai editorCode={editorCode} />
+            ) : (
+              // <Import
+              //   input={input}
+              //   setInput={setInput}
+              //   output={output}
+              //   setOutput={setOutput}
+              // />
+              <Question />
+            )}
+            {/* <Import
             input={input}
             setInput={setInput}
             output={output}
             setOutput={setOutput}
           /> */}
-          {/* <Ai /> */}
-        </div>
-        {loader && (
-          <div className="loader-container">
-            <div className="loader"></div>
+            {/* <Ai /> */}
           </div>
-        )}
+          {loader && (
+            <div className="loader-container">
+              <div className="loader"></div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </QuestionProvider>
   );
 };
 export default Playground;

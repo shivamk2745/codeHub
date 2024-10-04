@@ -1,74 +1,165 @@
-// .input{
-//   background-color: white;
-//   color: white;
-//   font-family: Arial, sans-serif;
-//   padding: 3rem;
-//   margin: 0 auto;
-//   text-align: center;
+// .input {
 //   display: flex;
-//   flex-direction: column;
-//   height: 100vh;
-//   // min-height: 100vh;
-//   h2 {
-//     font-size: 2.4rem;
-//     color: black;
-//     margin-bottom: 1rem;
-//   }
+//   justify-content: center;
+//   align-items: center;
+//   min-height: 100vh;
+//   background-color: #f4f4f9;
 
-//   .subtitle {
-//     font-size: 1.6rem;
-//     margin-bottom: 2rem;
-//     color: black;
-//   }
+//   .ai-container {
+//     background-color: #ffffff;
+//     border-radius: 1.5rem;
+//     padding: 2rem;
+//     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+//     max-width: 700px;
+//     width: 90%;
+//     text-align: center;
 
-//   .chat-modes {
-//     display: flex;
-//     justify-content: space-around;
-//     margin-bottom: 3rem;
-//     gap: 1rem;
-//     color: black;
-//     font-weight: 700;
-//     .mode-card {
-//       background-color: aqua;
-//       border-radius: 1rem;
-//       padding: 2rem;
-//       // width: 12rem;
-//       // height: 12rem;
+//     .ai-header-wrapper {
+//       margin-top: -7rem;
+//       margin-bottom: 1rem;
+//       padding: 1rem;
+//     }
+
+//     .ai-header {
+//       font-size: 2.5rem;
+//       font-weight: 700;
+//       color: #333;
+//     }
+
+//     .subtitle {
+//       font-size: 1rem;
+//       font-weight: 500;
+//       margin-bottom: 2rem;
+//       color: #555;
+//     }
+
+//     .chat-modes {
 //       display: flex;
-//       flex-direction: column;
-//       justify-content: center;
-//       align-items: center;
-//       transition: background-color 0.3s ease;
+//       justify-content: space-around;
+//       margin-bottom: 2rem;
 
-//       &:hover {
-//         background-color: #3e3e3e;
-//         color: white;
+//       .mode-card {
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         background-color: #7c3aed !important;
+//         padding: 1.5rem;
+//         border-radius: 1rem;
+//         transition: transform 0.3s ease;
+//         cursor: pointer;
+//         width: 100%;
+//         max-width: 180px;
+
+//         &:hover {
+//           transform: scale(1.05);
+//           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+//           background-color: #7c3aed;
+//           color: white !important;
+//           transition: all 0.3s ease-in-out;
+//         }
+
+//         .icon {
+//           font-size: 2rem;
+//           margin-bottom: 0.5rem;
+//         }
+
+//         p {
+//           font-size: 1.1rem;
+//           font-weight: 600;
+//           color: #333;
+//         }
 //       }
+//     }
 
-//       .icon {
-//         font-size: 2.4rem;
-//         margin-bottom: 1rem;
-//         color: black;
+//     .examples {
+//       .description {
+//         font-size: 1.2rem;
+//         font-weight: 400;
+//         margin-bottom: 0.1rem;
+//         color: #444;
+//         line-height: 1;
 //       }
 
 //       p {
-//         font-size: 1.4rem;
-//         text-align: left;
-//         margin: 0;
+//         font-size: 1.6rem;
+//         margin-bottom: 0.4rem;
+//         color: #333;
 //       }
 //     }
 //   }
+// }
 
-//   .description {
-//     font-size: 2rem;
-//     font-weight: 700;
-//     color: black;
-//     text-align: left;
-//   }
+// /* Tablet Responsiveness */
+// @media (max-width: 768px) {
+//   .ai-container {
+//     padding: 1rem;
+//     max-width: 100%;
+//     height: auto;
+//     overflow: hidden;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
 
-//   .examples {
-//     font-size: 2rem;
-//     color: black;
-//     text-align: left;
+//     /* Adding Wrapper for ai-header */
+//     .ai-header-wrapper {
+//       margin-top: -0.9rem; // Adjust margin as necessary
+//       padding: 0.5rem;
+//       width: 100%; /* Ensure it takes up the full width */
+//       text-align: center; /* Center the header and subtitle */
+//       margin-bottom: 0 !important;
+//     }
+
+//     .ai-header {
+//       font-size: 3rem !important; /* Make header font smaller on tablets */
+//     }
+
+//     .subtitle {
+//       font-size: 2rem !important;
+//       margin-bottom: 0 !important; /* Adjust space below subtitle */
+//     }
+
+//     /* Chat modes should be stacked vertically on tablet */
+//     .chat-modes {
+//       display: flex;
+//       flex-direction: column; /* Stack the cards vertically */
+//       gap: 1rem;
+//       width: 100%; /* Ensure the cards span full width */
+//       align-items: center;
+//       margin-bottom: 0.8rem !important;
+
+//       .mode-card {
+//         width: 100%; /* Adjust width to fit within container */
+//         padding: 1rem;
+//         height: 5rem; /* Auto height to avoid clipping */
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         background-color: #00e3ff; /* Ensure it's visible */
+//         border-radius: 10px;
+//         font-size: 1rem !important; /* Adjust font size for readability */
+//       }
+//     }
+
+//     .examples {
+//       width: 100%; /* Full width for examples section */
+//       padding: 1rem;
+//       text-align: center; /* Center the text */
+
+//       .description {
+//         font-size: 2.2rem !important;
+//         line-height: 1 !important;
+//         color: #444;
+//       }
+
+//       .description .example {
+//         margin-top: 1rem !important;
+//         margin-bottom: 1rem !important;
+//       }
+
+//       p {
+//         font-size: 2rem !important;
+//         line-height: 2rem;
+//       }
+//     }
 //   }
 // }
