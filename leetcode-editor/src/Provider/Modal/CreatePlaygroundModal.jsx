@@ -33,12 +33,12 @@ const CreatePlaygroundModal = () => {
           <h1>Create New Playground & Create New Folder</h1>
         </div>
         <div className="item">
-          <p>Enter Folder Name</p>
-          <input type="text" name="folderName" required />
+          <h3>Enter Folder Name</h3>
+          <input type="text" name="folderName" required autofocus />
         </div>
         <div className="item">
-          <p>Enter File Name</p>
-          <input type="text" name="fileName" required />
+          <h3>Enter File Name</h3>
+          <input type="text" name="fileName" required autofocus />
         </div>
         <div className="item">
           <select name="language" required>

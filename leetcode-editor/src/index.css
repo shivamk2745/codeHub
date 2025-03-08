@@ -12,6 +12,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 * {
   padding: 0;
   margin: 0;
@@ -22,20 +25,20 @@ html {
 /* For small devices (like phones) */
 @media (max-width: 600px) {
   html {
-    font-size: 50%; 
+    font-size: 50%;
   }
 }
 
 /* For medium devices (like tablets) */
 @media (min-width: 600px) and (max-width: 1200px) {
   html {
-    font-size: 56.25%; 
+    font-size: 56.25%;
   }
 }
 
 /* For large devices (like desktops) */
 @media (min-width: 1200px) {
   html {
-    font-size: 62.5%; 
+    font-size: 62.5%;
   }
 }

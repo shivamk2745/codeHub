@@ -21,8 +21,8 @@ const NewFolder = () => {
           <h1 className="new-folder">Create New Folder</h1>
         </div>
         <div className="item">
-          <p>Enter Folder Name</p>
-          <input type="text" name="folderName" required />
+          <h3>Enter Folder Name</h3>
+          <input type="text" name="folderName" required autofocus />
         </div>
         <div className="item">
           <button type="submit" className="cancel" onClick={closeSpan}>

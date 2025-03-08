@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { QuestionContext } from "./QuestionProvider";
-
+import "./AiChat.scss";
+// import { Ai } from "./public/images/Ai.jpg";
 const AiChat = ({ editorCode, mode }) => {
   const apiKey = import.meta.env.VITE_API_KEY;
   console.log(apiKey);
@@ -9,6 +10,7 @@ const AiChat = ({ editorCode, mode }) => {
   const genAI = new GoogleGenerativeAI(apiKey);
   const [aiResponse, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
+  const [center, setCenter] = useState(true);
   const { questionDesc, examples } = useContext(QuestionContext);
 
   const generatePrompt = () => {
@@ -36,6 +38,8 @@ const AiChat = ({ editorCode, mode }) => {
     const prompt = generatePrompt();
     const result = await model.generateContent(prompt);
     const response = await result.response;
+    // console.log(text);
+
     const text = response.text();
 
     // Format the response for better readability
@@ -43,6 +47,7 @@ const AiChat = ({ editorCode, mode }) => {
 
     setResponse(formattedText);
     setLoading(false);
+    setCenter(false);
   }
 
   const handleClick = () => {
@@ -68,28 +73,61 @@ const AiChat = ({ editorCode, mode }) => {
 
   return (
     <div className="input">
-      <div style={{ display: "flex" }}>
-        <button style={{ marginLeft: "20px" }} onClick={handleClick}>
-          Search
-        </button>
-      </div>
-
-      {loading ? (
-        <p style={{ margin: "30px 0" }}>Loading ...</p>
-      ) : (
-        <div style={{ margin: "30px 0" }}>
-          {/* Render formatted response */}
-          <div
-            dangerouslySetInnerHTML={{ __html: aiResponse }}
-            style={{
-              backgroundColor: "#f8f8f8",
-              padding: "10px",
-              borderRadius: "5px",
-              lineHeight: "1.6",
-            }}
-          />
+      <div className="aicontainer">
+        <div className="response">
+          {loading ? (
+            <div className="loader-container">
+              <div className="loader"></div>
+            </div>
+          ) : (
+            <div className="response-ai">
+              {center ? (
+                <div className="centeral-text">
+                  <div className="image-container">
+                    <img
+                      src="https://media.ahmedabadmirror.com/am/uploads/mediaGallery/image/1724872805696.jpg-org "
+                      alt=""
+                    />
+                    <h2>Make Use Of Our Ai-Assitant</h2>
+                  </div>
+                  <p>
+                    Our AI already has knowledge about the problem and your
+                    solution. You can start asking questions right away.
+                  </p>
+                  <ul className="rule">
+                    <li>
+                      Avoid distractions while working on problems to enhance
+                      productivity and accuracy
+                    </li>
+                    <li>
+                      Don't hesitate to collaborate with peers or ask for help
+                      when stuck.
+                    </li>
+                    <li>
+                      Always read the problem thoroughly and plan your solution
+                      before jumping into coding.
+                    </li>
+                    <li>
+                      Test your code with various inputs, including edge cases,
+                      before submitting or sharing
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <div dangerouslySetInnerHTML={{ __html: aiResponse }} />
+              )}
+            </div>
+          )}
+          {/* {loading && (
+            
+          )} */}
         </div>
-      )}
+        <div className="button-div">
+          <button onClick={handleClick} className="btn">
+            Search
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

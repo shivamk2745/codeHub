@@ -14,7 +14,7 @@ const Ai = ({ editorCode }) => {
     setAiMode(!aiMode);
   };
   const handleExplain = (e) => {
-    setMode("explanation"); 
+    setMode("explanation");
     setAiMode(!aiMode);
   };
   // const { questionDesc, examples } = useContext(QuestionContext);

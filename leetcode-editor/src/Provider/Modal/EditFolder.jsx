@@ -46,7 +46,7 @@ const EditFolder = ({ id }) => {
           <h1 className="new-folder">Edit {title} Name</h1>
         </div>
         <div className="item">
-          <p>Enter New {title} Name</p>
+          <h3>Enter New {title} Name</h3>
           <input type="text" name="folderName" required />
         </div>
         <div className="item">

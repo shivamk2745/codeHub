@@ -1,0 +1,97 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(201, 41, 41);
+  color: black;
+  overflow: hidden;
+  .aicontainer {
+    height: 100vh;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    .response {
+      overflow-y: auto;
+      display: flex;
+      height: 95%;
+      background-color: rgb(237, 237, 237);
+      color: black;
+      .loader-container {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .loader {
+          width: 10rem;
+          height: 10rem;
+          background-color: transparent;
+          border: 1rem solid rgba(255, 0, 0, 0.332);
+          border-left-color: red;
+          border-radius: 50%;
+          animation: 0.8s loader infinite linear;
+        }
+      }
+      .response-ai {
+        padding: 1.5rem;
+        color: white;
+        font-size: 1.8rem;
+        color: black;
+        .centeral-text {
+          display: flex;
+          flex-direction: column;
+          .image-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+            img {
+              border-radius: 1rem;
+              height: 30rem;
+              width: 30rem;
+            }
+            h2 {
+              margin-top: 1rem;
+              font-size: 3rem;
+            }
+          }
+          p {
+            padding: 1rem;
+            font-size: 2.2rem;
+          }
+          .rule {
+            padding: 2rem;
+            li {
+              margin-top: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+    .button-div {
+      height: 5%;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      .btn {
+        background-color: rgb(173, 11, 11);
+        width: 100%;
+        color: white;
+        font-size: 2rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        &:hover {
+          background-color: rgb(0, 255, 255);
+          color: black;
+         
+        }
+      }
+    }
+  }
+}

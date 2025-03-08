@@ -3,7 +3,7 @@ import "./index.scss";
 import RightScreen from "./rightScreen";
 import { ModalContext } from "../../Provider/ProviderModal";
 import Modals from "../../Provider/Modal/Modals";
-const Home = () => {
+const EditorHome = () => {
   const modalFeature = useContext(ModalContext);
   const modalOpen = () => {
     modalFeature.openModal("C");
@@ -16,7 +16,8 @@ const Home = () => {
           <h1>codeOnline</h1>
           <h2>Code. Compile. Learn</h2>
           <button onClick={modalOpen}>
-            <span className="material-icons">add</span>Create New PlayGround
+            <span className="material-icons">add</span>
+            <h3>Create New PlayGround</h3>
           </button>
         </div>
       </div>
@@ -25,4 +26,4 @@ const Home = () => {
     </div>
   );
 };
-export default Home;
+export default EditorHome;
